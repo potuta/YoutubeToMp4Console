@@ -20,16 +20,12 @@ You provide a URL, a start time, and an end time — the app downloads that exac
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 - [`yt-dlp.exe`](https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.exe)
-- [`ffmpeg.exe`] & [`ffprobe.exe`](https://www.gyan.dev/ffmpeg/builds/) 
+- [`ffmpeg.exe & ffprobe.exe`](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-7.0.2-full_build.7z) 
 
-## 📁 Folder Structure
+## 📦 Setup Instructions
 
-YoutubeToMp4Console/
-├── Downloads/                 # Output folder
-├── Tools/
-│   └── ffmpeg/
-│       ├── ffmpeg.exe
-│       └── ffprobe.exe
-├── yt-dlp.exe
-├── Program.cs
-└── YoutubeToMp4Console.csproj
+1. **📥 Download the latest release of ffmpeg.exe & ffprobe.exe** from ['ffmpeg.exe & ffprobe.exe'](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-7.0.2-full_build.7z) 
+2. **📁 Create `Tools\ffmpeg\` folder (if not yet created) inside `YoutubeToMp4Console\` where .csproj is located.**
+3. **📁 Place ffmpeg.exe and ffprobe.exe inside `Tools\ffmpeg\` folder.**
+
+
