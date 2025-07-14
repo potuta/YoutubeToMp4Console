@@ -20,14 +20,16 @@ You provide a URL, a start time, and an end time — the app downloads that exac
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 - [`yt-dlp.exe`](https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.exe)
-- `ffmpeg.exe` & `ffprobe.exe` (see below)
+- [`ffmpeg.exe`] & [`ffprobe.exe`](https://www.gyan.dev/ffmpeg/builds/) 
 
----
+## 📁 Folder Structure
 
-## 📦 Setup Instructions
-
-1. **Clone this repository:**
-
-```bash
-git clone https://github.com/yourusername/YoutubeToMp4Console.git
-cd YoutubeToMp4Console
+YoutubeToMp4Console/
+├── Downloads/                 # Output folder
+├── Tools/
+│   └── ffmpeg/
+│       ├── ffmpeg.exe
+│       └── ffprobe.exe
+├── yt-dlp.exe
+├── Program.cs
+└── YoutubeToMp4Console.csproj
