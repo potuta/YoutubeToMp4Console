@@ -2,7 +2,7 @@
 
 A simple C# console app that downloads specific clips from YouTube videos or livestreams using [`yt-dlp`](https://github.com/yt-dlp/yt-dlp) and [`ffmpeg`](https://ffmpeg.org/).  
 
-You provide a URL, a start time, and an end time — the app downloads that exact section as an `.mp4` video. Useful for saving highlights, funny moments, or educational segments.
+You provide a URL, a start time, and an end time. The app downloads that exact section as an `.mp4` video. Useful for saving highlights, funny moments, or educational segments.
 
 ---
 
