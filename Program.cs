@@ -53,7 +53,8 @@ class Program
             string ffmpegPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Tools", "ffmpeg", "ffmpeg.exe");
 
             string section = $"*{start}-{end}";
-            string arguments = $"--download-sections \"{section}\" --recode-video mp4 --force-keyframes-at-cuts -o \"{outputPath}\" \"{url}\"";
+            //string arguments = $"--download-sections \"{section}\" --recode-video mp4 --force-keyframes-at-cuts -o \"{outputPath}\" \"{url}\"";
+            string arguments = $"--download-sections \"{section}\" -f \"bv[ext=mp4]+ba[ext=m4a]/b[ext=mp4]\" --recode-video mp4 --force-keyframes-at-cuts -o \"{outputPath}\" \"{url}\"";
 
             var process = new Process
             {
