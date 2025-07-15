@@ -74,7 +74,7 @@ Before opening the `YoutubeToMp4Console.exe`:
 4. Click **OK**
 
 #### 🔹 Option 3: Clone This Repo & Build It Yourself (Recommended for Devs)
-- See [Developers Setup Instructions](https://github.com/potuta/YoutubeToMp4Console/edit/master/README.md#developers)
+- See [Developers Setup Instructions](https://github.com/potuta/YoutubeToMp4Console?tab=readme-ov-file#developers)
 
 ---
 
