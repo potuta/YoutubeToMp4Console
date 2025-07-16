@@ -12,6 +12,20 @@ Just provide a URL, a start time, and an end time — the app will download that
 - 🎥 Outputs `.mp4` using `ffmpeg`  
 - 💡 Lightweight and runs fully offline (no GUI required)
 
+## 📷 App Screenshots
+
+### Specify Url, Start & End Times
+
+![1](https://github.com/user-attachments/assets/77816028-3896-419b-9ce7-318b640c0af2)
+
+### Downloading Phase
+
+![2](https://github.com/user-attachments/assets/da8b2245-8e56-443c-b0cd-a7bc575640a2)
+
+### Download Complete
+![3](https://github.com/user-attachments/assets/7265ad6a-e782-4f55-aad6-173f3236bfac)
+
+
 ---
 
 # Releases
