@@ -93,6 +93,7 @@ Before opening the `YoutubeToMp4Console.exe`:
 - [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 - [yt-dlp.exe](https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.exe)
 - [ffmpeg.exe](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-7.0.2-full_build.7z) 
+- [deno.exe](https://deno.com/) 
 
 ### 📦 Setup Instructions
 
