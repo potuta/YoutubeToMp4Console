@@ -51,8 +51,8 @@ class Program
             string outputPath = Path.Combine(downloadsDir, $"{baseOutputName}_{timestamp}.%(ext)s");
 
             string ytDlpPath = "yt-dlp.exe";
-            string ffmpegPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Tools", "ffmpeg.exe");
-            string jsRuntimePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Tools", "deno.exe");
+            string ffmpegPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Tools", "ffmpeg", "ffmpeg.exe");
+            string jsRuntimePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Tools", "deno", "deno.exe");
 
             if (!File.Exists(ffmpegPath))
             {

@@ -362,6 +362,5 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /Tools/ffmpeg/ffmpeg.exe
-/Tools/ffmpeg/ffprobe.exe
+/Tools/deno/deno.exe
 /Tools/deno.exe
-/Tools/ffmpeg.exe
