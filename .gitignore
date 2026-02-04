@@ -363,3 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 /Tools/ffmpeg/ffmpeg.exe
 /Tools/ffmpeg/ffprobe.exe
+/Tools/deno.exe
+/Tools/ffmpeg.exe

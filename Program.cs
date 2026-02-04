@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.Linq;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -50,11 +51,27 @@ class Program
             string outputPath = Path.Combine(downloadsDir, $"{baseOutputName}_{timestamp}.%(ext)s");
 
             string ytDlpPath = "yt-dlp.exe";
-            string ffmpegPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Tools", "ffmpeg", "ffmpeg.exe");
+            string ffmpegPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Tools", "ffmpeg.exe");
+            string jsRuntimePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Tools", "deno.exe");
+
+            if (!File.Exists(ffmpegPath))
+            {
+                Console.WriteLine($"ffmpeg.exe not found at: {ffmpegPath}");
+                return;
+            }
+
+            if (!File.Exists(jsRuntimePath))
+            {
+                Console.WriteLine($"deno.exe not found at: {jsRuntimePath}");
+                return;
+            }
 
             string section = $"*{start}-{end}";
-            //string arguments = $"--download-sections \"{section}\" --recode-video mp4 --force-keyframes-at-cuts -o \"{outputPath}\" \"{url}\"";
-            string arguments = $"--download-sections \"{section}\" -f \"bv[ext=mp4]+ba[ext=m4a]/b[ext=mp4]\" --recode-video mp4 --force-keyframes-at-cuts -o \"{outputPath}\" \"{url}\"";
+            string arguments = $"--download-sections \"{section}\" " +
+                            "-f \"bv[ext=mp4]+ba[ext=m4a]/b[ext=mp4]\" " +
+                            "--recode-video mp4 --force-keyframes-at-cuts " +
+                            $"--js-runtimes deno:\"{jsRuntimePath}\" " +
+                            $"-o \"{outputPath}\" \"{url}\"";
 
             var process = new Process
             {
@@ -69,9 +86,14 @@ class Program
                 }
             };
 
-            // Include ffmpeg in PATH
+            // Include ffmpeg & deno in PATH
+            string ffmpegDir = Path.GetDirectoryName(ffmpegPath);
+            string denoDir = Path.GetDirectoryName(jsRuntimePath);
+
+            string systemPath = Environment.GetEnvironmentVariable("PATH");
+
             process.StartInfo.Environment["PATH"] =
-                $"{Path.GetDirectoryName(ffmpegPath)};{Environment.GetEnvironmentVariable("PATH")}";
+                $"{ffmpegDir};{denoDir};{systemPath}";
 
             process.OutputDataReceived += (s, e) => Console.WriteLine(e.Data);
             process.ErrorDataReceived += (s, e) => Console.WriteLine(e.Data);

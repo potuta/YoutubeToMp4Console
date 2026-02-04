@@ -4,6 +4,13 @@ A lightweight C# console app that downloads specific clips from YouTube videos o
 
 Just provide a URL, a start time, and an end time — the app will download that exact section as an `.mp4` video. Great for highlights, YouTube Shorts, TikTok clips, and more.
 
+<p align="center">
+    <img alt="GitHub Release" src="https://img.shields.io/github/v/release/potuta/YouTubeToMp4Console?include_prereleases&sort=date&display_name=release&style=for-the-badge">
+    <img alt="GitHub Downloads (all assets, all releases)" src="https://img.shields.io/github/downloads/potuta/YoutubeToMp4Console/total?style=for-the-badge">
+    <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/potuta/YouTubeToMp4Console?style=for-the-badge">
+    <img alt="GitHub License" src="https://img.shields.io/github/license/potuta/YouTubeToMp4Console?style=for-the-badge">
+</p>
+
 ## ✨ Features
 
 - 🎯 Download precise segments from YouTube videos and livestreams  
