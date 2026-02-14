@@ -30,7 +30,11 @@ class Program
             return;
         }
 
-        CovertYoutubeToMp4(url, start, end);
+        Console.Write("Download audio only? (y/n): ");
+        string audioChoice = Console.ReadLine()?.Trim().ToLower();
+        bool audioOnly = audioChoice == "y" || audioChoice == "yes";
+
+        ConvertYoutubeToMp4(url, start, end, audioOnly);
     }
 
     static bool TryParseTime(string input, out TimeSpan result)
@@ -38,13 +42,13 @@ class Program
         return TimeSpan.TryParseExact(input, @"hh\:mm\:ss", CultureInfo.InvariantCulture, out result);
     }
 
-    static void CovertYoutubeToMp4(string url, string start, string end)
+    static void ConvertYoutubeToMp4(string url, string start, string end, bool audioOnly = false)
     {
         try
         {
             Directory.CreateDirectory("Downloads");
 
-            string baseOutputName = "clip";
+            string baseOutputName = audioOnly ? "audio" : "clip";
             string downloadsDir = "Downloads";
 
             string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
@@ -67,11 +71,24 @@ class Program
             }
 
             string section = $"*{start}-{end}";
-            string arguments = $"--download-sections \"{section}\" " +
+            string arguments;
+
+            if (audioOnly)
+            {
+                arguments = $"--download-sections \"{section}\" " +
+                            "-x --audio-format mp3 " +
+                            "--force-keyframes-at-cuts " +
+                            $"--js-runtimes deno:\"{jsRuntimePath}\" " +
+                            $"-o \"{outputPath}\" \"{url}\"";
+            }
+            else
+            {
+                arguments = $"--download-sections \"{section}\" " +
                             "-f \"bv[ext=mp4]+ba[ext=m4a]/b[ext=mp4]\" " +
                             "--recode-video mp4 --force-keyframes-at-cuts " +
                             $"--js-runtimes deno:\"{jsRuntimePath}\" " +
                             $"-o \"{outputPath}\" \"{url}\"";
+            }
 
             var process = new Process
             {
@@ -104,7 +121,7 @@ class Program
             process.WaitForExit();
 
             string outputFile = Directory
-                .GetFiles(downloadsDir, $"clip_{timestamp}.*")
+                .GetFiles(downloadsDir, $"{baseOutputName}_{timestamp}.*")
                 .FirstOrDefault();
 
             if (!string.IsNullOrEmpty(outputFile))
