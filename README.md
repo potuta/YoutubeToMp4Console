@@ -2,7 +2,7 @@
 
 A lightweight C# console app that downloads specific clips from YouTube videos or livestreams using [`yt-dlp`](https://github.com/yt-dlp/yt-dlp) and [`ffmpeg`](https://ffmpeg.org/).  
 
-Just provide a URL, a start time, and an end time — the app will download that exact section as an `.mp4` video. Great for highlights, YouTube Shorts, TikTok clips, and more.
+Just provide a URL, a start time, and an end time — the app will download that exact section as an `.mp4` video. Great for highlights, YouTube Shorts, and more.
 
 <p align="center">
     <img alt="GitHub Release" src="https://img.shields.io/github/v/release/potuta/YouTubeToMp4Console?include_prereleases&sort=date&display_name=release&style=for-the-badge">
