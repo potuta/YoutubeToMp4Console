@@ -1,0 +1,20 @@
+[33m1b3c61b[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdevel[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/devel[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m Added deno and ffmpeg to gitignore
+[33m1bc7e2f[m Merge branch 'devel' of https://github.com/potuta/YoutubeToMp4Console into devel
+[33m15877b0[m Fixed downloading errors by adding js runtime deno. Required for yt-dlp to work due to youtube changes
+[33ma84a248[m Merge pull request #3 from potuta/master
+[33mbca009c[m Update README.md
+[33ma28c18f[m Update README.md
+[33m1cef725[m Update README.md
+[33md787aeb[m Update README.md
+[33mc29aabd[m Create LICENSE
+[33m9d899c9[m[33m ([m[1;33mtag: [m[1;33mv1.0.1[m[33m)[m Force to download in mp4 to improve speed
+[33mab1723e[m Merge pull request #1 from potuta/master
+[33m4d20e9e[m Update README.md
+[33m49f21e6[m Added time format validation checks
+[33m073f878[m Update README.md
+[33md2d7abb[m Update README.md
+[33m357bfa8[m Update README.md
+[33m02b096e[m[33m ([m[1;33mtag: [m[1;33mv1.0.0[m[33m)[m Update README.md
+[33m6552f36[m Updated ReadMe
+[33m68c86a7[m Changed ReadMe
+[33md959f03[m Add project files.
