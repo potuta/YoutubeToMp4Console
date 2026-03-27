@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.IO;
 using System.Threading.Tasks;
+using System.Transactions;
 
 class Program
 {
@@ -21,12 +22,14 @@ class Program
         if (!TryParseTime(start, out TimeSpan startTime) || !TryParseTime(end, out TimeSpan endTime))
         {
             Console.WriteLine("Invalid time format. Please use HH:MM:SS.");
+            enterToExit();
             return;
         }
 
         if (endTime <= startTime)
         {
             Console.WriteLine("End time must be after start time.");
+            enterToExit();
             return;
         }
 
@@ -50,19 +53,50 @@ class Program
             string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
             string outputPath = Path.Combine(downloadsDir, $"{baseOutputName}_{timestamp}.%(ext)s");
 
-            string ytDlpPath = "yt-dlp.exe";
-            string ffmpegPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Tools", "ffmpeg", "ffmpeg.exe");
-            string jsRuntimePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Tools", "deno", "deno.exe");
+            string ytDlpPath = string.Empty;
+            string ffmpegFile = string.Empty;
+            string jsRuntimeFile = string.Empty;
+
+            if (OperatingSystem.IsWindows())
+            {
+                ytDlpPath = "yt-dlp.exe";
+                ffmpegFile = "ffmpeg.exe";
+                jsRuntimeFile = "deno.exe";
+            }
+            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS())
+            {
+                ytDlpPath = "yt-dlp";
+                ffmpegFile = "ffmpeg";
+                jsRuntimeFile = "deno";
+            }
+            else
+            {
+                Console.WriteLine("Unsupported operating system.");
+                enterToExit();
+                return;
+            }
+
+            if (string.IsNullOrEmpty(ytDlpPath) || string.IsNullOrEmpty(ffmpegFile) || string.IsNullOrEmpty(jsRuntimeFile))
+            {
+                Console.WriteLine("Could not determine tool paths for the current operating system.");
+                enterToExit();
+                return;
+            }
+
+            string ffmpegPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Tools", "ffmpeg", ffmpegFile);
+            string jsRuntimePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Tools", "deno", jsRuntimeFile);
 
             if (!File.Exists(ffmpegPath))
             {
-                Console.WriteLine($"ffmpeg.exe not found at: {ffmpegPath}");
+                Console.WriteLine($"{ffmpegFile} not found at: {ffmpegPath}");
+                enterToExit();
                 return;
             }
 
             if (!File.Exists(jsRuntimePath))
             {
-                Console.WriteLine($"deno.exe not found at: {jsRuntimePath}");
+                Console.WriteLine($"{jsRuntimeFile} not found at: {jsRuntimePath}");
+                enterToExit();
                 return;
             }
 
@@ -109,17 +143,26 @@ class Program
 
             if (!string.IsNullOrEmpty(outputFile))
             {
-                Console.WriteLine($"Download complete. Saved to: {outputFile}");
+                Console.WriteLine($"Download complete. Saved to: YoutubeToMp4Console\\{outputFile}");
+                enterToExit();
             }
             else
             {
                 Console.WriteLine("Download unsuccessful.");
+                enterToExit(); 
             }
         }
         catch (Exception ex)
         {
             Console.WriteLine($"An error occurred:\n{ex}");
+            enterToExit();
         }
         
+    }
+
+    static void enterToExit()
+    {
+        Console.WriteLine("Press Enter to exit.");
+        Console.ReadLine();
     }
 }
