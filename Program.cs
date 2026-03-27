@@ -63,7 +63,7 @@ class Program
                 ffmpegFile = "ffmpeg.exe";
                 jsRuntimeFile = "deno.exe";
             }
-            else if (OperatingSystem.IsMacOS())
+            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS())
             {
                 ytDlpPath = "yt-dlp";
                 ffmpegFile = "ffmpeg";
